@@ -1,0 +1,63 @@
+# Byte-compiled / optimized / compiled files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.txt
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Project-specific files
+*.log
+*.pot
+*.mo
+db.sqlite3
+media/
+static_collected/
+local_settings.py
+
+# Virtual environment
+.env/
+venv/
+env/
+
+# IDE-specific files (e.g., PyCharm)
+.idea/
+*.iml
+.vscode/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Django migrations (optional, see note below)
+# Note: It's generally recommended to track migration files, but in early development
+# or specific scenarios, you might choose to ignore them temporarily.
+# <app_name>/migrations/
