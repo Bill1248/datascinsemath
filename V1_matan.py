@@ -156,3 +156,53 @@ dz_dx_no_chain = diff(z.subs(y, _y))
 # оба варианта дают одинаковый результат
 print(dz_dx_chain) # 6*x*(x**2 + 1)**2
 print(dz_dx_no_chain) # 6*x*(x**2 + 1)**2
+
+# Интегралы
+
+# Приближенное вычисление интеграла на Python
+def approximate_integral(a, b, n, f):
+    delta_x = (b - a) / n # ширина каждого прямоугольника
+    total_sum = 0
+    for i in range(1, n + 1):
+        midpoint = 0.5 * (2 * a + delta_x * (2 * i - 1))
+        # midpoint — координата по x середины верхней стороны прямоугольника
+        total_sum += f(midpoint)
+    return total_sum * delta_x
+def my_function(x):
+    return x**2 + 1
+area = approximate_integral(a=0, b=1, n=5, f=my_function)
+print(area) # выводит 1.33
+# Еще одно приближенное вычисление интеграла на Python
+area = approximate_integral(a=0, b=1, n=1000, f=my_function)
+print(area) # выводит 1.333333250000001
+# И еще одно приближенное вычисление интеграла на Python
+area = approximate_integral(a=0, b=1, n=1_000_000, f=my_function)
+print(area) # выводит 1.3333333333332733
+
+# Интегрирование с помощью SymPy
+from sympy import *
+# Объявляем символ x для SymPy
+x = symbols('x')
+# Объявляем функцию через обычный синтаксис Python
+f = x**2 + 1
+# Вычисляем интеграл от функции по x в интервале от x = 0 до x = 1
+area = integrate(f, (x, 0, 1))
+print(area) # выводит 4/3
+
+# Использование пределов для вычисления интегралов
+from sympy import *
+# Объявляем переменные для SymPy
+x, i, n = symbols('x i n')
+# Объявляем функцию и интервал
+f = x**2 + 1
+lower, upper = 0, 1
+# Вычисляем ширину и высоту каждого прямоугольника с индексом i
+delta_x = ((upper - lower) / n)
+x_i = (lower + delta_x * i)
+fx_i = f.subs(x, x_i)
+# Перебираем все n прямоугольников и суммируем их площади
+n_rectangles = Sum(delta_x * fx_i, (i, 1, n)).doit()
+# Вычисляем площадь,
+# устремив число прямоугольников n к бесконечности
+area = limit(n_rectangles, n, oo)
+print(area) # выводит 4/3
